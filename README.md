@@ -72,7 +72,7 @@ If you built with `cmake`, execute
 ```
 Alternatively, if you built with `fpm`, execute
 ```bash
-    fpm run gpt2
+    fpm run fastGPT
 ```
 
 ### Create the GGUF file
