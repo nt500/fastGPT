@@ -34,19 +34,27 @@ A quick breakdown of each of the files:
     * `linalg_c.f90`, `linalg_accelerate.c` macOS Accelerate Framework
 * `pt.py`: a reference script to run PyTorch (returns the same answer)
 
-## Build and Run
+## Getting Started
 
-Install prerequisites:
-
+### Install prerequisites:
+```bash
     mamba env create -f environment.yml
     conda activate fastgpt
+```
 
-Configure and build:
+### Configure and build
+#### Fortran Package Manager (fpm)
+```bash
+    fpm build
+```
 
+#### CMake 
+```bash
     FC=gfortran cmake .
     make
+```
 
-Download the GPT2 model weights:
+### Download the GPT2 model weights
 
     curl -o model.gguf -L https://huggingface.co/certik/fastGPT/resolve/main/model_fastgpt_124M_v2.gguf
 
@@ -55,28 +63,37 @@ You can also download 355M for the `gpt-medium` model.
 Now you can modify the `input` file to change the input string and set other
 parameters.
 
-Run (requires `model.gguf` and `input` in the current directory):
+### Run 
+(requires `model.gguf` and `input` in the current directory)
 
+If you built with `cmake`, execute
+```bash
     ./gpt2
+```
+Alternatively, if you built with `fpm`, execute
+```bash
+    fpm run gpt2
+```
 
-## Creating the GGUF file
+### Create the GGUF file
 
 Create the `model.gguf` file from a given GPT-2 model. Supported sizes (and the
 corresponding names to be used in `pt.py`, and the approximate download size):
 "124M" (`gpt2`, 0.5GB), "355M" (`gpt-medium`, 1.5GB), "774M" (`gpt-large`,
 3GB), "1558M" (`gpt-xl`, 6GB). This will download the model and cache it for
 subsequent runs:
-
+```python
     python create_model.py --models_dir "models" --model_size "124M"
+```
 
 This script depends on the `gguf` Python library, that you can install using:
-
+```bash
     git clone https://github.com/ggerganov/llama.cpp
     cd llama.cpp
     git checkout 4e9a7f7f7fb6acbddd1462909c8d696e38edbfcc
     cd gguf-py
     pip install .
-
+```
 The `gguf` library is available in pip and conda, but we currently require the
 latest version that is not available there yet.
 
