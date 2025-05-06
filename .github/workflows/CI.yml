@@ -30,11 +30,6 @@ jobs:
           extra-specs: |
             sel(osx): gfortran=11.3.0
 
-      - uses: hendrikmuhs/ccache-action@main
-        with:
-          variant: sccache
-          key: ${{ github.job }}-${{ matrix.os }}
-
       - name: Install GGUF
         shell: bash -e -x -l {0}
         run: |
@@ -69,11 +64,6 @@ jobs:
           extra-specs: |
             lfortran=0.20.3
             sel(linux): llvm-openmp=11.1.0
-
-      - uses: hendrikmuhs/ccache-action@main
-        with:
-          variant: sccache
-          key: ${{ github.job }}-${{ matrix.os }}
 
       - name: Build and run
         shell: bash -l {0}
