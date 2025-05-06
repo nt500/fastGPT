@@ -29,7 +29,7 @@ jobs:
           micromamba-version: '2.0.4-0'
           environment-file: environment.yml
           create-args: >-
-            ${{ matrix.os == 'macos-latest' && 'gfortran=11.3.0' || '' }}
+            ${{ matrix.os == 'macos-latest' && 'gfortran=14.2.0' || '' }}
 
       - name: Install GGUF
         shell: bash -e -x -l {0}
