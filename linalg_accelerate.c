@@ -3,6 +3,7 @@ This file provides matvec implementation using the macOS Accelerate
 Framework, which seems to be the most optimized matrix matrix multiplication
 on macOS.
 */
+#include <CoreFoundation/CFAttributedString.h>
 #include <Accelerate/Accelerate.h>
 
 void acc_sgemm(int m, int n, int k, float *A, float *B, float *C) {
