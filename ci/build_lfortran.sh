@@ -11,6 +11,7 @@ cd lf
 FC=lfortran CMAKE_PREFIX_PATH=$CONDA_PREFIX cmake -DFASTGPT_BLAS=OpenBLAS -DCMAKE_BUILD_TYPE=Debug ..
 make VERBOSE=1
 ln -s ../model.gguf .
+ln -s ../input .
 time OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./gpt2
 time OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./test_basic_input
 time OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./test_more_inputs
@@ -21,6 +22,7 @@ cd lf-fast
 FC="lfortran --fast" CMAKE_PREFIX_PATH=$CONDA_PREFIX cmake -DFASTGPT_BLAS=OpenBLAS -DCMAKE_BUILD_TYPE=Release ..
 make VERBOSE=1
 ln -s ../model.gguf .
+ln -s ../input .
 time OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./gpt2
 time OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./test_basic_input
 time OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 ./test_more_inputs
