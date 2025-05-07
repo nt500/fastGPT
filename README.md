@@ -72,8 +72,13 @@ If you built with `cmake`, execute
 ```
 Alternatively, if you built with `fpm`, execute
 ```bash
-    fpm run fastGPT
+    fpm run chatgpt2
 ```
+to launch an interactive chat session
+```bash
+    fpm run gpt2
+```
+or to launch a session with predetermined prompts.
 
 ### Create the GGUF file
 
