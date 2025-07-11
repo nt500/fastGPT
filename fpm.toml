@@ -1,1 +1,4 @@
 name = "fastGPT"
+
+[dependencies]
+fastgpt = { git = "https://github.com/nt500/fastGPT.git", branch = "fastgpt" }
